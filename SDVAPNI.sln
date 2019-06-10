@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDVAPNI", "SDVAPNI\SDVAPNI.csproj", "{B7834CD8-DAEF-4D8F-86B5-B319B4D401FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7834CD8-DAEF-4D8F-86B5-B319B4D401FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7834CD8-DAEF-4D8F-86B5-B319B4D401FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7834CD8-DAEF-4D8F-86B5-B319B4D401FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7834CD8-DAEF-4D8F-86B5-B319B4D401FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A7997EB-532E-4E11-B924-BDD365A2D508}
+	EndGlobalSection
+EndGlobal
