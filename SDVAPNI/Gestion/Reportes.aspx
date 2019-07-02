@@ -38,7 +38,7 @@
     <br />
     <br />
     <div class="scrolling-table-container">
-        <asp:GridView runat="server" ID="gvVisitsList" CssClass="table table-bordered" AutoGenerateColumns="false" AllowPaging="true" DataKeyNames="id">
+        <asp:GridView runat="server" ID="gvVisitsList" CssClass="table table-bordered" AutoGenerateColumns="false" AllowPaging="false" DataKeyNames="id">
             <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" />
             <Columns>
                 <asp:BoundField DataField="cedula" HeaderText="CEDULA" HeaderStyle-CssClass="badge-secondary text-center" HeaderStyle-ForeColor="White" />
