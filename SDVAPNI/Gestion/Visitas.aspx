@@ -152,9 +152,9 @@
                             <div class="col">
                                 <asp:DropDownList runat="server" ID="DpdOpcionesAreas" CssClass="form-control" ClientIDMode="Static">
                                     <asp:ListItem Text="Debes Seleccionar un Area" Value="-1"></asp:ListItem>
-                                    <asp:ListItem Text="TI - APNI" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="TI - CESCO" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="RR . HH" Value="3"></asp:ListItem>
+                                    <asp:ListItem Text="TÉCNOLOGIA AIRPAK" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="TÉCNOLOGIA CESCO" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="TALENTO HUMANO" Value="3"></asp:ListItem>
                                     <asp:ListItem Text="CONTABILIDAD" Value="4"></asp:ListItem>
                                     <asp:ListItem Text="ARCHIVO" Value="5"></asp:ListItem>
                                     <asp:ListItem Text="GERENCIA" Value="6"></asp:ListItem>
@@ -162,6 +162,12 @@
                                     <asp:ListItem Text="CASHPAK" Value="8"></asp:ListItem>
                                     <asp:ListItem Text="MANTENIMIENTO" Value="9"></asp:ListItem>
                                     <asp:ListItem Text="COMERCIAL" Value="10"></asp:ListItem>
+									<asp:ListItem Text="LEGAL" Value="11"></asp:ListItem>
+									<asp:ListItem Text="CUMPLIMIENTO" Value="12"></asp:ListItem>
+									<asp:ListItem Text="INFRAESTRUCTURA" Value="13"></asp:ListItem>
+									<asp:ListItem Text="CONTRALORIA" Value="14"></asp:ListItem>
+									<asp:ListItem Text="CONCILIACIÓN" Value="15"></asp:ListItem>
+									<asp:ListItem Text="CALL CENTER" Value="16"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
