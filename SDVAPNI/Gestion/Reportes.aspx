@@ -6,7 +6,8 @@
 
     <br />
     <br />
-    <br />
+    <asp:Label ID="lblWelcomeUser" runat="server" CssClass="form-control" Style="font-size: medium; color: deepskyblue"></asp:Label>
+
     <div class="container">
         <div class="row">
             <div class="col-6 col-md-4">

@@ -13,6 +13,15 @@ namespace SDVAPNI.GestionUsuarios {
     public partial class ManageUsuarios {
         
         /// <summary>
+        /// Control lblWelcomeUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWelcomeUser;
+        
+        /// <summary>
         /// Control gvUserRols.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace SDVAPNI.GestionUsuarios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvUserRols;
+        
+        /// <summary>
+        /// Control TxtFullName.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtFullName;
         
         /// <summary>
         /// Control TxtUsuario.

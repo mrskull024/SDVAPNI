@@ -22,6 +22,21 @@ namespace SDVAPNI.GestionUsuarios
         protected void Page_Load(object sender, EventArgs e)
         {
             var Credenciales = HttpContext.Current.User.Identity.IsAuthenticated;
+
+            CreateConnection();
+            OpenConnection();
+            _sqlCommand.CommandText = "SelectUserNames";
+            _sqlCommand.Parameters.AddWithValue("@Event", "Select");
+            _sqlCommand.Parameters.AddWithValue("@UserName", HttpContext.Current.User.Identity.Name);
+            _sqlCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = _sqlCommand.ExecuteReader();
+            string name = string.Empty;
+            while (reader.Read())
+            {
+                name = reader["CompleteName"].ToString();
+                lblWelcomeUser.Text = "Bienvenido /a, " + name.ToString() + "!";
+            }
+
             if (Credenciales)
             {
                 if (!IsPostBack)
@@ -112,6 +127,56 @@ namespace SDVAPNI.GestionUsuarios
             }
         }
 
+        protected void ChangeName(string Id)
+        {
+            CreateConnection();
+            OpenConnection();           
+            _sqlCommand.CommandText = "AddCompleteName";
+            _sqlCommand.Parameters.AddWithValue("@Event", "Update");
+            _sqlCommand.Parameters.AddWithValue("@CompleteName", TxtFullName.Text.Trim());
+            _sqlCommand.Parameters.AddWithValue("@Id", Id);
+            _sqlCommand.CommandType = CommandType.StoredProcedure;
+            int result = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            if (result > 0)
+            {
+                //Alerta("El Nombre fue Removido Exitosamente", "Success");
+            }
+            else
+            {
+                Alerta("Ocurrio un Error al Eliminar el Registro", "Primary");
+            }
+        }
+
+        public string SelectNames(string UserName)
+        {
+            string resultName = string.Empty;
+            CreateConnection();
+            OpenConnection();
+            _sqlCommand.CommandText = "SelectUserNames";
+            _sqlCommand.Parameters.AddWithValue("@Event", "Select");
+            _sqlCommand.Parameters.AddWithValue("@UserName", UserName);
+            _sqlCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = _sqlCommand.ExecuteReader();
+            string name = string.Empty;
+            while (reader.Read())
+            {
+                name = reader["CompleteName"].ToString();
+            }
+            //int result = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
+            //int result = -1;
+            //if (result > 0)
+            //{ 
+            //    resultName = gvUserRols.Rows[index:0].Cells[2].Text;
+            //    //resultName = _dtSet.Tables["AspNetUsers"].Rows[0]["12"].ToString();
+            //    //Alerta("El Nombre fue Removido Exitosamente", "Success");
+            //}
+            //else
+            //{
+            //    Alerta("Ocurrio un Error al Seleccionar el Nombre", "Primary");
+            //}
+
+            return name;
+        }
         protected void BtnRegistrar_Click(object sender, EventArgs e)
         {
             try
@@ -146,11 +211,16 @@ namespace SDVAPNI.GestionUsuarios
                     Alerta("El campo Telefono es requerido", "Warning");
                     return;
                 }
+                if(TxtFullName.Text.Trim()== string.Empty)
+                {
+                    Alerta("El campo Nombres es requerido", "Warning");
+                    return;
+                }
 
                 var GuardarUsuario = new UserStore<IdentityUser>();
                 var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
                 var Manager = new UserManager<IdentityUser>(GuardarUsuario);
-                var Usuario = new IdentityUser() { UserName = TxtUsuario.Text.Trim(), Email = TxtEmail.Text.Trim(), PhoneNumber = TxtPhoneNumber.Text.Trim() };
+                IdentityUser Usuario = new IdentityUser() { UserName = TxtUsuario.Text.Trim(), Email = TxtEmail.Text.Trim(), PhoneNumber = TxtPhoneNumber.Text.Trim(),  };
                 var Resultado = Manager.Create(Usuario, TxtPassword1.Text.Trim());
 
                 if (Resultado.Succeeded)
@@ -162,6 +232,8 @@ namespace SDVAPNI.GestionUsuarios
                     if (ResultadoInsert.Succeeded)
                     {
                         Alerta("Se ha registrado Exitosamente", "Success");
+                        ChangeName(CurrentUser.Id);
+
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "MostrarModalUsuario();", true);
                         LimpiarDatos();
                         return;
@@ -191,6 +263,7 @@ namespace SDVAPNI.GestionUsuarios
             public string Email { get; set; }
             public string PhoneN { get; set; }
             public string Role { get; set; }
+            public string CompleteName { get; set; }
         }
 
         protected void gvUserRols_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -210,6 +283,7 @@ namespace SDVAPNI.GestionUsuarios
                 if (UsuarioActual != null && RolActual != null)
                 {
                     TxtUsuario.Text = UsuarioActual.UserName;
+                    TxtFullName.Text = SelectNames(UsuarioActual.UserName);
                     TxtEmail.Text = UsuarioActual.Email;
                     TxtPhoneNumber.Text = UsuarioActual.PhoneNumber;
                     DpdRoleId.SelectedValue = RolActual.Name;

@@ -93,8 +93,8 @@
 
     <br />
     <br />
-    <br />
-    <br />
+    <asp:Label ID="lblWelcomeUser" runat="server" CssClass="form-control" Style="font-size: medium; color: deepskyblue"></asp:Label>
+
     <div>
         <button type="button" class="btn btn-outline-success" data-target="#ModalNewUsuario" data-toggle="modal" data-backdrop="static" data-keyboard="false"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Registrar Nuevo</button>
     </div>
@@ -107,6 +107,7 @@
             <Columns>
                 <asp:BoundField DataField="Rol" ItemStyle-HorizontalAlign="Center" HeaderText="ROL" HeaderStyle-CssClass="badge-secondary text-center" HeaderStyle-ForeColor="White" />
                 <asp:BoundField DataField="UserName" ItemStyle-HorizontalAlign="Center" HeaderText="USUARIO" HeaderStyle-CssClass="badge-secondary text-center" HeaderStyle-ForeColor="White" />
+                 <asp:BoundField DataField="CompleteName" ItemStyle-HorizontalAlign="Center" HeaderText="NOMBRES" HeaderStyle-CssClass="badge-secondary text-center" HeaderStyle-ForeColor="White" />
                 <asp:BoundField DataField="Email" ItemStyle-HorizontalAlign="Center" HeaderText="CORREO" HeaderStyle-CssClass="badge-secondary text-center" HeaderStyle-ForeColor="White" />
                 <asp:BoundField DataField="PhoneNumber" ItemStyle-HorizontalAlign="Center" HeaderText="TELEFONO" HeaderStyle-CssClass="badge-secondary text-center" HeaderStyle-ForeColor="White" />
                 <asp:TemplateField HeaderText="ACCIÓN" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="badge-secondary text-center" HeaderStyle-ForeColor="White">
@@ -134,6 +135,17 @@
                 <div class="modal-body">
 
                     <div class="messagealert" id="alert_container">
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3">
+                                <asp:Label runat="server" AssociatedControlID="TxtFullName" CssClass="form-control" Style="font-size: medium">Nombres:</asp:Label>
+                            </div>
+                            <div class="col">
+                                <asp:TextBox style="text-transform:uppercase" runat="server" ID="TxtFullName" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="container">
