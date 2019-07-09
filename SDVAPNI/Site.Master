@@ -43,6 +43,8 @@
             </Scripts>
         </asp:ScriptManager>
 
+        <%--<--%>
+
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" runat="server" href="~/Gestion/Visitas.aspx">SDVAPNI</a>
@@ -79,11 +81,13 @@
                             <a runat="server" href="~/Account/LoginSDVAPNI.aspx">Iniciar Sesion</a>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <a runat="server" class="form-control" style="color: white; font-size: medium;"><%: Context.User.Identity.GetUserName() %></a>
+                            <%--<a id="CompleteUserName" style="color: white; font-size: small;">Bienvenido: Julio Cesar Martinez, </a>--%>
+                            <a runat="server" class="form-control" style="color: white; font-size: small;">( <%: Context.User.Identity.GetUserName() %> )</a>
                             <asp:LoginStatus runat="server" ID="Stat" CssClass="Stat" LogoutAction="Redirect" LogoutText="Cerrar Sesion" LogoutPageUrl="~/Account/LoginSDVAPNI.aspx" OnLoggingOut="Unnamed_LoggingOut" />
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
+                <br />
             </div>
         </div>
 

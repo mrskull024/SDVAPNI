@@ -60,10 +60,10 @@
         }
 
     </script>
+    <br />
+    <br />
+    <asp:Label ID="lblWelcomeUser" runat="server" CssClass="form-control" Style="font-size: medium; color: deepskyblue"></asp:Label>
 
-    <br />
-    <br />
-    <br />
     <div>
         <button type="button" class="btn btn-outline-success" data-target="#ModalNewVisit" data-toggle="modal" data-backdrop="static" data-keyboard="false"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Registrar Nuevo</button>
     </div>
@@ -71,7 +71,7 @@
     <br />
     <br />
     <div class="scrolling-table-container">
-        <asp:GridView runat="server" ID="gvVisitsList" CssClass="table table-bordered" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="gvVisitsList_PageIndexChanging" DataKeyNames="id" OnRowCommand="gvVisitsList_RowCommand" PageSize="5">
+        <asp:GridView runat="server" ID="gvVisitsList" CssClass="table table-bordered" AutoGenerateColumns="false" AllowPaging="true" OnPageIndexChanging="gvVisitsList_PageIndexChanging" DataKeyNames="id" OnRowCommand="gvVisitsList_RowCommand" PageSize="10">
             <HeaderStyle HorizontalAlign="Left" VerticalAlign="Middle" />
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="ID" HeaderStyle-CssClass="badge-secondary text-center hide" HeaderStyle-ForeColor="White" Visible="false" />

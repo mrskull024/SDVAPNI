@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using SDVAPNI.Models;
 
 namespace SDVAPNI.Models
 {
@@ -25,6 +22,8 @@ namespace SDVAPNI.Models
         {
             return Task.FromResult(GenerateUserIdentity(manager));
         }
+
+        public virtual string CompleteName { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -13,6 +13,15 @@ namespace SDVAPNI.GestionUsuarios {
     public partial class ManageRoles {
         
         /// <summary>
+        /// Control lblWelcomeUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWelcomeUser;
+        
+        /// <summary>
         /// Control txtNombreRol.
         /// </summary>
         /// <remarks>
