@@ -15,27 +15,14 @@ namespace SDVAPNI.GestionUsuarios
     public partial class ManageUsuarios : System.Web.UI.Page
     {
         private string strConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly string NombreUsuario = HttpContext.Current.User.Identity.Name;
         private SqlCommand _sqlCommand;
         private SqlDataAdapter _sqlDataAdapter;
         DataSet _dtSet;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var Credenciales = HttpContext.Current.User.Identity.IsAuthenticated;
-
-            CreateConnection();
-            OpenConnection();
-            _sqlCommand.CommandText = "SelectUserNames";
-            _sqlCommand.Parameters.AddWithValue("@Event", "Select");
-            _sqlCommand.Parameters.AddWithValue("@UserName", HttpContext.Current.User.Identity.Name);
-            _sqlCommand.CommandType = CommandType.StoredProcedure;
-            SqlDataReader reader = _sqlCommand.ExecuteReader();
-            string name = string.Empty;
-            while (reader.Read())
-            {
-                name = reader["CompleteName"].ToString();
-                lblWelcomeUser.Text = "Bienvenido /a, " + name.ToString() + "!";
-            }
+            var Credenciales = HttpContext.Current.User.Identity.IsAuthenticated;       
 
             if (Credenciales)
             {
@@ -43,6 +30,8 @@ namespace SDVAPNI.GestionUsuarios
                 {
                     ObtenerRoles();
                     ListarUsuariosyRoles();
+                    lblWelcomeUser.Text = "Bienvenido/a, " + SelectNames(NombreUsuario) + "!";
+
                 }
             }
             else
@@ -162,18 +151,6 @@ namespace SDVAPNI.GestionUsuarios
             {
                 name = reader["CompleteName"].ToString();
             }
-            //int result = Convert.ToInt32(_sqlCommand.ExecuteNonQuery());
-            //int result = -1;
-            //if (result > 0)
-            //{ 
-            //    resultName = gvUserRols.Rows[index:0].Cells[2].Text;
-            //    //resultName = _dtSet.Tables["AspNetUsers"].Rows[0]["12"].ToString();
-            //    //Alerta("El Nombre fue Removido Exitosamente", "Success");
-            //}
-            //else
-            //{
-            //    Alerta("Ocurrio un Error al Seleccionar el Nombre", "Primary");
-            //}
 
             return name;
         }
@@ -220,7 +197,7 @@ namespace SDVAPNI.GestionUsuarios
                 var GuardarUsuario = new UserStore<IdentityUser>();
                 var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
                 var Manager = new UserManager<IdentityUser>(GuardarUsuario);
-                IdentityUser Usuario = new IdentityUser() { UserName = TxtUsuario.Text.Trim(), Email = TxtEmail.Text.Trim(), PhoneNumber = TxtPhoneNumber.Text.Trim(),  };
+                IdentityUser Usuario = new IdentityUser() { UserName = TxtUsuario.Text.Trim(), Email = TxtEmail.Text.Trim(), PhoneNumber = TxtPhoneNumber.Text.Trim()  };
                 var Resultado = Manager.Create(Usuario, TxtPassword1.Text.Trim());
 
                 if (Resultado.Succeeded)
