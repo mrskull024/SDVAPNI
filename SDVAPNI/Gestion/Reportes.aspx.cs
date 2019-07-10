@@ -23,25 +23,12 @@ namespace SDVAPNI.Gestion
         {
             var Credenciales = HttpContext.Current.User.Identity.IsAuthenticated;
 
-            CreateConnection();
-            OpenConnection();
-            _sqlCommand.CommandText = "SelectUserNames";
-            _sqlCommand.Parameters.AddWithValue("@Event", "Select");
-            _sqlCommand.Parameters.AddWithValue("@UserName", HttpContext.Current.User.Identity.Name);
-            _sqlCommand.CommandType = CommandType.StoredProcedure;
-            SqlDataReader reader = _sqlCommand.ExecuteReader();
-            string name = string.Empty;
-            while (reader.Read())
-            {
-                name = reader["CompleteName"].ToString();
-                lblWelcomeUser.Text = "Bienvenido /a, " + name.ToString() + "!";
-            }
-
             if (Credenciales)
             {
                 if (!IsPostBack)
                 {
                     BindVisitData();
+                    lblWelcomeUser.Text = "Bienvenido/a, " + SelectNames(HttpContext.Current.User.Identity.Name) + "!";
                 }
             }
             else
@@ -70,6 +57,25 @@ namespace SDVAPNI.Gestion
         private void DisposeConnection()
         {
             _sqlCommand.Connection.Dispose();
+        }
+
+        public string SelectNames(string UserName)
+        {
+            string resultName = string.Empty;
+            CreateConnection();
+            OpenConnection();
+            _sqlCommand.CommandText = "SelectUserNames";
+            _sqlCommand.Parameters.AddWithValue("@Event", "Select");
+            _sqlCommand.Parameters.AddWithValue("@UserName", UserName);
+            _sqlCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = _sqlCommand.ExecuteReader();
+            string name = string.Empty;
+            while (reader.Read())
+            {
+                name = reader["CompleteName"].ToString();
+            }
+
+            return name;
         }
 
         private void BindVisitData()

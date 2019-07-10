@@ -14,27 +14,13 @@ namespace SDVAPNI.GestionUsuarios
     {
         private string strConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         private SqlCommand _sqlCommand;
-        private SqlDataAdapter _sqlDataAdapter;
-        DataSet _dtSet;
+        //private SqlDataAdapter _sqlDataAdapter;
+        //DataSet _dtSet;
 
         public readonly string Nusuario = HttpContext.Current.User.Identity.Name;
         protected void Page_Load(object sender, EventArgs e)
         {
             var Credenciales = HttpContext.Current.User.Identity.IsAuthenticated;
-
-            CreateConnection();
-            OpenConnection();
-            _sqlCommand.CommandText = "SelectUserNames";
-            _sqlCommand.Parameters.AddWithValue("@Event", "Select");
-            _sqlCommand.Parameters.AddWithValue("@UserName", HttpContext.Current.User.Identity.Name);
-            _sqlCommand.CommandType = CommandType.StoredProcedure;
-            SqlDataReader reader = _sqlCommand.ExecuteReader();
-            string name = string.Empty;
-            while (reader.Read())
-            {
-                name = reader["CompleteName"].ToString();
-                lblWelcomeUser.Text = "Bienvenido /a, " + name.ToString() + "!";
-            }
 
             if (Credenciales)
             {
@@ -42,6 +28,7 @@ namespace SDVAPNI.GestionUsuarios
                 {
                     ListarUsuarios();
                     ListarRoles();
+                    lblWelcomeUser.Text = "Bienvenido/a, " + SelectNames(HttpContext.Current.User.Identity.Name) + "!";
                 }
             }
             else
@@ -72,7 +59,24 @@ namespace SDVAPNI.GestionUsuarios
             _sqlCommand.Connection.Dispose();
         }
 
+        public string SelectNames(string UserName)
+        {
+            string resultName = string.Empty;
+            CreateConnection();
+            OpenConnection();
+            _sqlCommand.CommandText = "SelectUserNames";
+            _sqlCommand.Parameters.AddWithValue("@Event", "Select");
+            _sqlCommand.Parameters.AddWithValue("@UserName", UserName);
+            _sqlCommand.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = _sqlCommand.ExecuteReader();
+            string name = string.Empty;
+            while (reader.Read())
+            {
+                name = reader["CompleteName"].ToString();
+            }
 
+            return name;
+        }
         private void ListarUsuarios()
         {
             try
