@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace SDVAPNI.Gestion
 {
-    public partial class Reportes : System.Web.UI.Page
+    public partial class ReportesEquipos : System.Web.UI.Page
     {
         private string strConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         private SqlCommand _sqlCommand;
@@ -83,7 +83,7 @@ namespace SDVAPNI.Gestion
             {
                 CreateConnection();
                 OpenConnection();
-                _sqlCommand.CommandText = "ListDatabyDate";
+                _sqlCommand.CommandText = "ListDatabyDatePcs";
                 _sqlCommand.CommandType = CommandType.StoredProcedure;
                 _sqlCommand.Parameters.AddWithValue("@Event", "Select");
                 _sqlCommand.Parameters.AddWithValue("@fecha_inicio", Convert.ToString(TxtDateStart.Text.Trim()));
@@ -91,12 +91,12 @@ namespace SDVAPNI.Gestion
                 _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
                 _dtSet = new DataSet();
                 _sqlDataAdapter.Fill(_dtSet);
-                gvVisitsList.DataSource = _dtSet;
-                gvVisitsList.DataBind();
+                gvEquiposList.DataSource = _dtSet;
+                gvEquiposList.DataBind();
             }
             catch (Exception ex)
             {
-                Response.Redirect("Ocurrio un Error al Listar las Visitas: " + ex);
+                Response.Redirect("Ocurrio un Error al Listar los Equipos: " + ex);
             }
             finally
             {
@@ -105,12 +105,21 @@ namespace SDVAPNI.Gestion
             }
         }
 
+        protected void BtnListData_Click(object sender, EventArgs e)
+        {
+            GetDataForReport();
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+
+        }
         protected void BtnDownloadPDF_Click(object sender, EventArgs e)
         {
-            PdfPTable pdfPTable = new PdfPTable(gvVisitsList.HeaderRow.Cells.Count);
+            PdfPTable pdfPTable = new PdfPTable(gvEquiposList.HeaderRow.Cells.Count);
             pdfPTable.DefaultCell.FixedHeight = 100f;
 
-            foreach (TableCell headerCell in gvVisitsList.HeaderRow.Cells)
+            foreach (TableCell headerCell in gvEquiposList.HeaderRow.Cells)
             {
                 PdfPCell pdfCell = new PdfPCell(new Phrase(headerCell.Text));
                 pdfPTable.AddCell(pdfCell);
@@ -118,7 +127,7 @@ namespace SDVAPNI.Gestion
             }
 
 
-            foreach (GridViewRow gridViewRow in gvVisitsList.Rows)
+            foreach (GridViewRow gridViewRow in gvEquiposList.Rows)
             {
                 foreach (TableCell tableCell in gridViewRow.Cells)
                 {
@@ -131,9 +140,9 @@ namespace SDVAPNI.Gestion
 
             Document pdfDocument = new Document(PageSize.A4.Rotate(), 5f, 5f, 5f, 5f);
             PdfWriter.GetInstance(pdfDocument, Response.OutputStream);
-            Paragraph titulo = new Paragraph("Reporte de Visitas Generado el: " + DateTime.Now);
+            Paragraph titulo = new Paragraph("Reporte de Ingreso de Equipos Generado el: " + DateTime.Now);
             Paragraph fechas = new Paragraph("Con rango de fechas de: " + TxtDateStart.Text + " hasta: " + TxtDateEnd.Text);
-    
+
             pdfDocument.Open();
             pdfDocument.Add(titulo);
             titulo.SpacingAfter = 200f;
@@ -144,7 +153,7 @@ namespace SDVAPNI.Gestion
             pdfDocument.Close();
 
             Response.ContentType = "application/pdf";
-            Response.AppendHeader("content-disposition", "attachment;filename=Visitas.pdf");
+            Response.AppendHeader("content-disposition", "attachment;filename=IngresoEquipos.pdf");
             Response.Write(pdfDocument);
             Response.Flush();
             //Response.End();
@@ -153,67 +162,57 @@ namespace SDVAPNI.Gestion
         protected void BtnDonwloadXLS_Click(object sender, EventArgs e)
         {
             Response.ClearContent();
-            Response.AppendHeader("content-disposition", "attachment;filename=Visitas.xls");
+            Response.AppendHeader("content-disposition", "attachment;filename=IngresoEquipos.xls");
             Response.ContentType = "application/excel";
 
             StringWriter stringWriter = new StringWriter();
             HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
 
-            gvVisitsList.HeaderRow.Style.Add("background-color", "#FFFFF");
-            foreach(TableCell tableCell in gvVisitsList.HeaderRow.Cells)
+            gvEquiposList.HeaderRow.Style.Add("background-color", "#FFFFF");
+            foreach (TableCell tableCell in gvEquiposList.HeaderRow.Cells)
             {
                 tableCell.Style["background-color"] = "#A55129";
             }
-            foreach(GridViewRow gridViewRow in gvVisitsList.Rows)
+            foreach (GridViewRow gridViewRow in gvEquiposList.Rows)
             {
-                gvVisitsList.BackColor = System.Drawing.Color.White;
-                foreach(TableCell tableCell2 in gridViewRow.Cells)
-                {
-                    tableCell2.Style["background-color"] = "#FFF7E7";
-                }
-            }
-
-            gvVisitsList.RenderControl(htmlTextWriter);
-            Response.Write(stringWriter.ToString());
-            Response.End();
-        }
-
-        public override void VerifyRenderingInServerForm(Control control)
-        {
-            
-        }
-
-        protected void BtnDonwloadDOC_Click(object sender, EventArgs e)
-        {
-            Response.ClearContent();
-            Response.AppendHeader("content-disposition", "attachment;filename=Visitas.doc");
-            Response.ContentType = "application/word";
-
-            StringWriter stringWriter = new StringWriter();
-            HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
-
-            gvVisitsList.HeaderRow.Style.Add("background-color", "#FFFFF");
-            foreach (TableCell tableCell in gvVisitsList.HeaderRow.Cells)
-            {
-                tableCell.Style["background-color"] = "#A55129";
-            }
-            foreach (GridViewRow gridViewRow in gvVisitsList.Rows)
-            {
-                gvVisitsList.BackColor = System.Drawing.Color.White;
+                gvEquiposList.BackColor = System.Drawing.Color.White;
                 foreach (TableCell tableCell2 in gridViewRow.Cells)
                 {
                     tableCell2.Style["background-color"] = "#FFF7E7";
                 }
             }
 
-            gvVisitsList.RenderControl(htmlTextWriter);
+            gvEquiposList.RenderControl(htmlTextWriter);
             Response.Write(stringWriter.ToString());
             Response.End();
         }
 
-        protected void BtnListData_Click(object sender, EventArgs e)
+        protected void BtnDonwloadDOC_Click(object sender, EventArgs e)
         {
-            GetDataForReport();
+            Response.ClearContent();
+            Response.AppendHeader("content-disposition", "attachment;filename=IngresoEquipos.doc");
+            Response.ContentType = "application/word";
+
+            StringWriter stringWriter = new StringWriter();
+            HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
+
+            gvEquiposList.HeaderRow.Style.Add("background-color", "#FFFFF");
+            foreach (TableCell tableCell in gvEquiposList.HeaderRow.Cells)
+            {
+                tableCell.Style["background-color"] = "#A55129";
+            }
+            foreach (GridViewRow gridViewRow in gvEquiposList.Rows)
+            {
+                gvEquiposList.BackColor = System.Drawing.Color.White;
+                foreach (TableCell tableCell2 in gridViewRow.Cells)
+                {
+                    tableCell2.Style["background-color"] = "#FFF7E7";
+                }
+            }
+
+            gvEquiposList.RenderControl(htmlTextWriter);
+            Response.Write(stringWriter.ToString());
+            Response.End();
         }
     }
 }

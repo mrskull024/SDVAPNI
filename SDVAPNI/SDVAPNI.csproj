@@ -192,7 +192,9 @@
     <Content Include="favicon.ico" />
     <Content Include="GestionUsuarios\ManageRoles.aspx" />
     <Content Include="GestionUsuarios\ManageUsuarios.aspx" />
+    <Content Include="Gestion\IngresoEquipos.aspx" />
     <Content Include="Gestion\Reportes.aspx" />
+    <Content Include="Gestion\ReportesEquipos.aspx" />
     <Content Include="Gestion\Visitas.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
@@ -403,12 +405,26 @@
     <Compile Include="GestionUsuarios\ManageUsuarios.aspx.designer.cs">
       <DependentUpon>ManageUsuarios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Gestion\IngresoEquipos.aspx.cs">
+      <DependentUpon>IngresoEquipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gestion\IngresoEquipos.aspx.designer.cs">
+      <DependentUpon>IngresoEquipos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Gestion\Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Gestion\Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\ReportesEquipos.aspx.cs">
+      <DependentUpon>ReportesEquipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gestion\ReportesEquipos.aspx.designer.cs">
+      <DependentUpon>ReportesEquipos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Gestion\Visitas.aspx.cs">
       <DependentUpon>Visitas.aspx</DependentUpon>
