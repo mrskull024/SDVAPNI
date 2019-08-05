@@ -76,20 +76,26 @@ namespace SDVAPNI
                     Reportes.Visible = true;
                     Usuarios.Visible = true;
                     Roles.Visible = true;
+                    IngresoEquipos.Visible = true;
+                    ReportesEquipos.Visible = true;
                 }
                 if (HttpContext.Current.User.IsInRole("UsuarioRecepcion"))
                 {
                     Visitas.Visible = true;
+                    IngresoEquipos.Visible = true;
                 }
                 if (HttpContext.Current.User.IsInRole("UsuarioReportes"))
                 {
                     Reportes.Visible = true;
+                    ReportesEquipos.Visible = true;
                 }
                 if (HttpContext.Current.User.IsInRole("Administrador"))
                 {
                     Visitas.Visible = true;
                     Reportes.Visible = true;
                     Usuarios.Visible = true;
+                    IngresoEquipos.Visible = true;
+                    ReportesEquipos.Visible = true;
                 }  
             }
         }

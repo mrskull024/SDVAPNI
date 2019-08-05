@@ -7,99 +7,81 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SDVAPNI {
+namespace SDVAPNI.Gestion {
     
     
-    public partial class SiteMaster {
+    public partial class ReportesEquipos {
         
         /// <summary>
-        /// Control ExternalStyleSheets.
+        /// Control lblWelcomeUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ExternalStyleSheets;
+        protected global::System.Web.UI.WebControls.Label lblWelcomeUser;
         
         /// <summary>
-        /// Control Visitas.
+        /// Control TxtDateStart.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Visitas;
+        protected global::System.Web.UI.WebControls.TextBox TxtDateStart;
         
         /// <summary>
-        /// Control IngresoEquipos.
+        /// Control TxtDateEnd.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor IngresoEquipos;
+        protected global::System.Web.UI.WebControls.TextBox TxtDateEnd;
         
         /// <summary>
-        /// Control Reportes.
+        /// Control BtnListData.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Reportes;
+        protected global::System.Web.UI.WebControls.Button BtnListData;
         
         /// <summary>
-        /// Control ReportesEquipos.
+        /// Control BtnDownloadPDF.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ReportesEquipos;
+        protected global::System.Web.UI.WebControls.Button BtnDownloadPDF;
         
         /// <summary>
-        /// Control Usuarios.
+        /// Control BtnDonwloadXLS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Usuarios;
+        protected global::System.Web.UI.WebControls.Button BtnDonwloadXLS;
         
         /// <summary>
-        /// Control Roles.
+        /// Control BtnDonwloadDOC.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Roles;
+        protected global::System.Web.UI.WebControls.Button BtnDonwloadDOC;
         
         /// <summary>
-        /// Control Ghost1.
+        /// Control gvEquiposList.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Ghost1;
-        
-        /// <summary>
-        /// Control Ghost2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Ghost2;
-        
-        /// <summary>
-        /// Control MainContent.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView gvEquiposList;
     }
 }

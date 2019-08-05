@@ -58,7 +58,13 @@
                             <a class="nav-link" id="Visitas" runat="server" href="~/Gestion/Visitas.aspx" visible="false">Visitas</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" id="IngresoEquipos" runat="server" href="~/Gestion/IngresoEquipos.aspx" visible="false">Ingreso de Equipos</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" id="Reportes" runat="server" href="~/Gestion/Reportes.aspx" visible="false">Reportes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="ReportesEquipos" runat="server" href="~/Gestion/ReportesEquipos.aspx" visible="false">Reportes Equipo</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="Usuarios" runat="server" href="~/GestionUsuarios/ManageUsuarios.aspx" visible="false">Gestion de Usuarios</a>
