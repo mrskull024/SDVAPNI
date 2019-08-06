@@ -161,5 +161,46 @@ namespace SDVAPNI.Gestion
         {
             LimpiarDatos();
         }
+
+        protected void BtnFindByCedula_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CreateConnection();
+                _sqlCommand.CommandType = CommandType.StoredProcedure;
+                _sqlCommand.CommandText = "FindPersonPcByCed";
+                _sqlCommand.Parameters.AddWithValue("@cedula", SqlDbType.VarChar).Value = TxtFindByCedula.Text.Trim();
+                OpenConnection();
+                SqlDataReader Reader = _sqlCommand.ExecuteReader();
+
+                if (Reader.HasRows)
+                {
+                    while (Reader.Read())
+                    {
+                        TxtNombres.Text = Convert.ToString(Reader["nombres"]);
+                        TxtCompania.Text = Convert.ToString(Reader["compania"]);
+                        TxtCedula.Text = Convert.ToString(Reader["cedula"]);
+                        DpdMarca.SelectedItem.Text = Convert.ToString(Reader["marca"]);
+                        TxtModelo.Text = Convert.ToString(Reader["modelo"]);
+                        TxtColor.Text = Convert.ToString(Reader["color"]);
+                        TxtSerie.Text = Convert.ToString(Reader["serie"]);
+                        TxtPersonaVisita.Text = Convert.ToString(Reader["referencia_visita"]);
+                    }
+                }
+                else
+                {
+                    Alerta("No se encontraron registro con la cedula especificada: " + TxtCedula.Text.Trim(), "Info");
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                CloseConnection();
+                DisposeConnection();
+            }
+        }
     }
 }
