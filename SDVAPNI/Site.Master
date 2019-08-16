@@ -73,6 +73,9 @@
                             <a class="nav-link" id="Roles" runat="server" href="~/GestionUsuarios/ManageRoles.aspx" visible="false">Gestion de Roles</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" id="ListadoEquipos" runat="server" href="~/Gestion/EquiposRegistrados.aspx" visible="false">Equipos R.</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" id="Ghost1" runat="server" visible="false"></a>
                         </li>
                         <li class="nav-item">

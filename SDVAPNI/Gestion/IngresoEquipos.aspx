@@ -11,7 +11,7 @@
     <script src="../Scripts/Alert.js" type="text/javascript"></script>
     <script src="../Scripts/bootstrap.min.js" type="text/javascript"></script>
 
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $('#BtnFindByCedula').click(function () {
             
@@ -60,10 +60,13 @@
                 }               
             });
         });
+
+        function PrintFormat() {
+            window.print();           
+        }
     </script>
     <br />
     <br />
-    <asp:Label ID="lblWelcomeUser" runat="server" CssClass="form-control" Style="font-size: medium; color: deepskyblue"></asp:Label>
 
     <h4 class="text-center">AIRPAK NICARAGUA / GRUPO COEN</h4>
     <h4 class="text-center">CONTROL DE INGRESO EQUIPO DE COMPUTO VISITANTES</h4>
@@ -254,6 +257,7 @@
             </div>
         </div>
     </div>
+
     <br />
     <div class="container">
         <div class="row">
@@ -270,6 +274,9 @@
             </div>
             <div class="col text-center">
                 <asp:Button runat="server" Text="Limpiar Campos" CssClass="btn btn-info" data-backdrop="static" data-keyboard="false" ID="BtnLimpiaEquipo" ClientIDMode="Static" OnClick="BtnLimpiaEquipo_Click" />
+            </div>
+            <div class="col text-center">
+                <asp:Button runat="server" Text="Imprimir Formato" CssClass="btn btn-info" ID="BtnPrintService" OnClientClick="return PrintFormat();"/>
             </div>
         </div>
     </div>

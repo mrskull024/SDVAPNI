@@ -13,15 +13,6 @@ namespace SDVAPNI.Gestion {
     public partial class IngresoEquipos {
         
         /// <summary>
-        /// Control lblWelcomeUser.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWelcomeUser;
-        
-        /// <summary>
         /// Control TxtFecha.
         /// </summary>
         /// <remarks>
@@ -227,5 +218,14 @@ namespace SDVAPNI.Gestion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnLimpiaEquipo;
+        
+        /// <summary>
+        /// Control BtnPrintService.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnPrintService;
     }
 }
