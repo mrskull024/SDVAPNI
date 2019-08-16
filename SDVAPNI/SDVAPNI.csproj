@@ -192,6 +192,7 @@
     <Content Include="favicon.ico" />
     <Content Include="GestionUsuarios\ManageRoles.aspx" />
     <Content Include="GestionUsuarios\ManageUsuarios.aspx" />
+    <Content Include="Gestion\EquiposRegistrados.aspx" />
     <Content Include="Gestion\IngresoEquipos.aspx" />
     <Content Include="Gestion\Reportes.aspx" />
     <Content Include="Gestion\ReportesEquipos.aspx" />
@@ -404,6 +405,13 @@
     </Compile>
     <Compile Include="GestionUsuarios\ManageUsuarios.aspx.designer.cs">
       <DependentUpon>ManageUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\EquiposRegistrados.aspx.cs">
+      <DependentUpon>EquiposRegistrados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gestion\EquiposRegistrados.aspx.designer.cs">
+      <DependentUpon>EquiposRegistrados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Gestion\IngresoEquipos.aspx.cs">
       <DependentUpon>IngresoEquipos.aspx</DependentUpon>

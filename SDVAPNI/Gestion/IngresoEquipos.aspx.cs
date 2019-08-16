@@ -11,8 +11,6 @@ namespace SDVAPNI.Gestion
     {
         private string strConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         private SqlCommand _sqlCommand;
-        private SqlDataAdapter _sqlDataAdapter;
-        DataSet _dtSet;
 
         public readonly string Nusuario = HttpContext.Current.User.Identity.Name;
         protected void Page_Load(object sender, EventArgs e)
@@ -23,8 +21,6 @@ namespace SDVAPNI.Gestion
             {
                 if (!IsPostBack)
                 {
-
-                    lblWelcomeUser.Text = "Bienvenido/a, " + SelectNames(HttpContext.Current.User.Identity.Name) + "!";
                     TxtFirma.Text = SelectNames(HttpContext.Current.User.Identity.Name);
                     TxtFirmaQuienRevisa.Text = SelectNames(HttpContext.Current.User.Identity.Name);
                 }
@@ -185,6 +181,12 @@ namespace SDVAPNI.Gestion
                         TxtColor.Text = Convert.ToString(Reader["color"]);
                         TxtSerie.Text = Convert.ToString(Reader["serie"]);
                         TxtPersonaVisita.Text = Convert.ToString(Reader["referencia_visita"]);
+                        TxtFirmaPortador.Text = Convert.ToString(Reader["firma_portador"]);
+                        DpdOption1.SelectedItem.Text = Convert.ToString(Reader["misma_marca"]);
+                        DpdOption2.SelectedItem.Text = Convert.ToString(Reader["mismo_color"]);
+                        DpdOption3.SelectedItem.Text = Convert.ToString(Reader["mismo_modelo"]);
+                        DpdOption4.SelectedItem.Text = Convert.ToString(Reader["misma_serie"]);
+
                     }
                 }
                 else
